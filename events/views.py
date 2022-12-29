@@ -4,7 +4,7 @@ from calendar import HTMLCalendar
 from datetime import datetime
 
 # Create your views here.def
-def home(request,year,month):
+def home(request,year=datetime.now().year,month=datetime.now().strftime('%B')):
     name = 'Joe'
     month = month.capitalize()
     month_number = list(calendar.month_name).index(month);
