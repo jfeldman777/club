@@ -15,7 +15,7 @@ def home(request,year=datetime.now().year,month=datetime.now().strftime('%B')):
     current_year = now.year
     time = now.strftime('%I:%M:%p') #:@S')
     #convert mon from str to num
-    return render(request,'home.html',{
+    return render(request,'events/home.html',{
         "name": name,
         "year": year,
         "month": month,
