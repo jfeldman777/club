@@ -5,32 +5,41 @@
 <h1>Events</h1>
 <hr/>
 {% for event in event_list %}
-<h3>{{ event.name }}</h3>
+<div class="card">
+  <div class="card-header>"
+    {{event}}
+    </div>
+<div class="card-body">
+<h5 class="card-title">Venue:{{event.venue}}</h5>
+<p class="card-text">
 <ul>
 
-<li><b>when:</b>
+<li>Date:
 {{ event.event_date }}
 </li>
 
 <li>
-<b>where:</b>
-{{ event.venue}} || <b>website:</b> {{ event.venue.web }}
+Venue website
+ {{ event.venue.web }}
 </li>
 <li>
 <b>what:</b>  {{ event.description }}
 </li>
 <li>
-<b>who:</b>  {{ event.manager }}
+Manager:  {{ event.manager }}
 </li>
 <ul><b>guests:</b>
 {% for user in  event.attendee.all %}
 <li>
   {{user }}
 </li>
+
 {% endfor %}
 </ul>
+
 </ul>
-<hr/>
+</p></div>
+</div>
 {% endfor %}
 
 
