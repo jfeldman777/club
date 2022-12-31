@@ -11,6 +11,7 @@ admin.site.register(MyClubUser)
 
 @admin.register(Venue)
 class VenueAdmin(admin.ModelAdmin):
+    fields = ('name','address','phone','zip_code','web','email_address')
     list_display = ('name','address','phone')
     ordering = ('name',)
     search_fields = ('name','address')
