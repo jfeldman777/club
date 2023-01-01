@@ -4,7 +4,19 @@
 
 <center>
 <h1>Venue</h1>
+<br/>
+<table class="table table-stripped table-hover table-bordered>"
+  {% for venue in venuelist%}
+  <tr>
+<td>
+  <a href="{% url 'show-venue' venue_id %}">{{venue}}</a> Update
+</td>
 
+
+  </tr>
+
+
+</table>
 
 </center>
 {% endblock %}
