@@ -6,10 +6,12 @@
 <h1>Venue</h1>
 <br/>
 <table class="table table-stripped table-hover table-bordered>"
-  {% for venue in venuelist%}
+  {% for venue in venue_list %}
   <tr>
-<td>
-  <a href="{% url 'show-venue' venue_id %}">{{venue}}</a> Update
+<td align=right>
+  <a href="{% url 'show-venue' venue_id %}"
+class="btn btn-outline-secondary"
+  >{{venue}}</a> Update
 </td>
 
 

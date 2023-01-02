@@ -20,7 +20,7 @@ class MyClubUser(models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
-
+#name event_date venue manager description attendee
 class Event(models.Model):
     name = models.CharField('Event Name', max_length=120)
     event_date = models.DateTimeField('Event Date')

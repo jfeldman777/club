@@ -4,7 +4,7 @@ from calendar import HTMLCalendar
 from datetime import datetime
 from .models import Event,Venue
 
-from .forms import VenueForm
+from .forms import VenueForm, EventForm
 from django.http import HttpResponseRedirect
 
 def show_venue(request, venue_id):
@@ -34,7 +34,6 @@ def search_venues(request):
             "venues":venues
         })
 
-
 def  update_venue(request, venue_id):
     venue = Venue.objects.get(pk=venue_id)
     form = VenueForm(request.POST or None, instance=venue)
@@ -46,7 +45,6 @@ def  update_venue(request, venue_id):
 'venue':venue,
 'form':form
     })
-
 
 def add_venue(request):
     submitted = False
@@ -61,6 +59,22 @@ def add_venue(request):
             submitted = True
 
     return render(request, 'events/add_venue.html',
+    {'form':form,
+    'submitted':submitted,})
+
+def add_event(request):
+    submitted = False
+    if request.method == "POST":
+        form = EventForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add_event?submitted=True')
+    else:
+        form = EventForm
+        if 'submitted' in request.GET:
+            submitted = True
+
+    return render(request, 'events/add_event.html',
     {'form':form,
     'submitted':submitted,})
 
