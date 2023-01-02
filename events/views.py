@@ -14,7 +14,7 @@ def show_venue(request, venue_id):
 
 # Create your views here.def
 def list_venues(request):
-        venue_list = Venue.objects.all()
+        venue_list = Venue.objects.all().order_by('?')
         return render(request, 'events/venue_list.html',
         {"venue_list":venue_list})
 
@@ -103,7 +103,7 @@ def add_event(request):
 
 
 def all_events(request):
-    event_list = Event.objects.all()
+    event_list = Event.objects.all().order_by('event_date','name','venue',)
     return render(request, 'events/event_list.html',
     {"event_list":event_list})
 
