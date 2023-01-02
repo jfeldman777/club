@@ -3,12 +3,9 @@
 {% block content %}
 
 <h1>Events</h1>
-<hr/>
 {% for event in event_list %}
 <div class="card">
-  <div class="card-header>"
-    {{event}}
-    </div>
+  <div class="card-header"> {{event}} </div>
 <div class="card-body">
 <h5 class="card-title">Venue:{{event.venue}}</h5>
 <p class="card-text">
@@ -28,17 +25,19 @@ Venue website
 Manager:  {{ event.manager }}
 </li>
 <ul><b>guests:</b>
-{% for user in  event.attendee.all %}
-<li>
-  {{user }}
-</li>
 
+{% for user in  event.attendee.all %}
+<li>  {{user }}</li>
 {% endfor %}
 </ul>
 
 </ul>
 </p></div>
+<div class="card-footer text-muted">
+  <a href="{% url 'update-event' event.id %}" class="btn btn-outline-secondary">
+  Update event</a></div>
 </div>
+<br/>
 {% endfor %}
 
 
