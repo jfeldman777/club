@@ -14,6 +14,8 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import letter
 
+from django.core.paginator import Paginator
+
 def venue_csv(request):
     venues = Venue.objects.all()
     response = HttpResponse(content_type='text/plain')
@@ -53,7 +55,6 @@ def venue_pdf(request):
 
     return FileResponse(buf,as_attachment=True,filename="venue.pdf")
 
-
 def venue_text(request):
     venues = Venue.objects.all()
     response = HttpResponse(content_type='text/plain')
@@ -70,9 +71,16 @@ def show_venue(request, venue_id):
     {'venue':venue})
 
 def list_venues(request):
-        venue_list = Venue.objects.all().order_by('?')
+        #venue_list = Venue.objects.all()
+        #venue_list = Venue.objects.all().order_by('?')
+
+        p = Paginator(Venue.objects.all(), 3,)
+        page = request.GET.get('page')
+        venues = p.get_page(page)
+
         return render(request, 'events/venue_list.html',
-        {"venue_list":venue_list})
+        {
+        "venues":venues})
 
 def search_venues(request):
     if request.method == "POST":
