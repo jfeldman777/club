@@ -34,22 +34,18 @@ navbar-dark bg-primary">
           <a class="nav-link" href="{% url 'list-venues' %}">Venues</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'venue-text' %}">Venue Text File</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'venue-csv' %}">Venue CSV File</a>
-        </li>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            Generate
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="{% url 'venue-text' %}">Venue Text File</a></li>
+            <li><a class="dropdown-item" href="{% url 'venue-csv' %}">Venue CSV File</a></li>
+            <li><a class="dropdown-item" href="{% url 'venue-pdf' %}">Venue pdf File</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
+          </ul>         
         </li>
         <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
