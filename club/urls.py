@@ -18,5 +18,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('members/', include('django.contrib.auth.urls')),    
+    path('members/', include('members.urls')),
     path('',include('events.urls'))
 ]
+
+admin.site.site_header = "My Club Admin Page"
+admin.site.site_title = "Admin panel"
+admin.site.index_title = "welcome to admin panel"
